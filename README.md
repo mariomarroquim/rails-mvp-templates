@@ -1,6 +1,6 @@
 # Rails MVP Templates
 
-Ruby on Rails application templates to help you preconfigure a web app.
+Ruby on Rails templates to help you preconfigure a web application.
 
 ## Instructions
 
