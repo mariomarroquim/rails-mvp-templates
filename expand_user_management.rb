@@ -29,7 +29,7 @@ file "app/controllers/registrations_controller.rb", <<~CONTENT, force: true
         redirect_to after_authentication_url, notice: "Welcome!"
       else
         flash.now[:alert] = "Try another email address or password."
-        render :new, status: :unprocessable_content
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -80,7 +80,7 @@ file "app/controllers/users_controller.rb", <<~CONTENT, force: true
         redirect_to after_authentication_url, notice: "Your account was changed.", status: :see_other
       else
         flash.now[:alert] = "The passwords did not match."
-        render :edit, status: :unprocessable_content
+        render :edit, status: :unprocessable_entity
       end
     end
 
