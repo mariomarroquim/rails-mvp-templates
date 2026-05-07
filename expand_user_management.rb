@@ -5,7 +5,7 @@ run "bundle exec rails g authentication"
 run "bundle exec rails db:migrate"
 
 inject_into_file "db/seeds.rb", after: "#   end" do
-  "\n\nUser.create!(email_address: \"admin@example.com\", password: \"password\", password_confirmation: \"password\")"
+  "\n\nUser.create!(email_address: \"admin@example.com\", password: \"password\", password_confirmation: \"password\") unless User.exists?"
 end
 
 run "bundle exec rails db:seed"
@@ -104,7 +104,9 @@ file "app/controllers/users_controller.rb", <<~CONTENT, force: true
 CONTENT
 
 file "app/views/users/edit.html.erb", <<~CONTENT
-  <h1>Change password</h1>
+  <h1>Account settings</h1>
+
+  <h2>Update your password</h2>
 
   <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 
@@ -114,6 +116,8 @@ file "app/views/users/edit.html.erb", <<~CONTENT
     <%= form.submit "Save" %>
   <% end %>
   <br>
+
+  <h2>Remove your account</h2>
 
   <%= link_to "Remove my account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
 CONTENT
@@ -125,7 +129,7 @@ file "app/views/home/index.html.erb", <<~CONTENT
 
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-  <%= link_to "Change password", edit_user_url(Current.user) %><br>
+  <%= link_to "Account settings", edit_user_url(Current.user) %><br>
   <%= link_to "Sign out", session_url, data: { turbo_method: :delete } %>
 CONTENT
 
