@@ -45,6 +45,7 @@ file "app/views/registrations/new.html.erb", <<~CONTENT
   <h1>Sign up</h1>
 
   <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
   <%= form_for @user, url: registrations_path do |form| %>
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: @user.email_address %><br>
@@ -126,6 +127,7 @@ run "bundle exec rails g controller home"
 file "app/views/home/index.html.erb", <<~CONTENT
   <h1>Home</h1>
 
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
   <%= link_to "Account settings", edit_user_url(Current.user) %>
