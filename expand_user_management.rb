@@ -77,7 +77,7 @@ file "app/controllers/users_controller.rb", <<~CONTENT, force: true
 
     def update
       if @user.update(user_params)
-        redirect_to after_authentication_url, notice: "Your account was changed.", status: :see_other
+        redirect_to after_authentication_url, notice: "Your password was updated.", status: :see_other
       else
         flash.now[:alert] = "The passwords did not match."
         render :edit, status: :unprocessable_entity
