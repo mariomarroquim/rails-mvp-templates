@@ -62,7 +62,7 @@ inject_into_file "app/views/sessions/new.html.erb", before: '<%= tag.div(flash[:
 end
 
 inject_into_file "app/views/sessions/new.html.erb", after: '<%= link_to "Forgot password?", new_password_path %>' do
-  "<br>\n<%= link_to \"Don't have an account?\", new_registration_path %>"
+  "\n\n<br>\n\n<%= link_to \"Don't have an account?\", new_registration_path %>"
 end
 
 run "bundle exec rails g controller users"
@@ -115,9 +115,8 @@ file "app/views/users/edit.html.erb", <<~CONTENT
     <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72 %><br>
     <%= form.submit "Save" %>
   <% end %>
-  <br>
 
-  <h2>Remove your account</h2>
+  <h2>Danger zone</h2>
 
   <%= link_to "Remove my account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
 CONTENT
@@ -129,7 +128,10 @@ file "app/views/home/index.html.erb", <<~CONTENT
 
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-  <%= link_to "Account settings", edit_user_url(Current.user) %><br>
+  <%= link_to "Account settings", edit_user_url(Current.user) %>
+
+  <br>
+
   <%= link_to "Sign out", session_url, data: { turbo_method: :delete } %>
 CONTENT
 
