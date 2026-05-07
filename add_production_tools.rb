@@ -15,7 +15,7 @@ after_bundle do
 end
 
 inject_into_file "config/environments/production.rb", before: "# Settings specified here will take precedence over those in config/application.rb." do
-  "# Log requests in a single line.\n  config.lograge.enabled = true\n  config.lograge.custom_payload do |controller|\n    { current_user_id: controller.current_user.try(:id) }\n  end\n\n  "
+  "# Log requests in a single line.\n  config.lograge.enabled = true\n  config.lograge.custom_payload do |controller|\n    { current_user_id: controller.current_user&.id }\n  end\n\n  "
 end
 
 inject_into_file "config/environments/test.rb", after: "Rails.application.configure do" do
