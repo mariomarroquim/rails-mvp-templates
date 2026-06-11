@@ -11,13 +11,13 @@ These templates help you set up an app with commonly used development tools and 
 #### New Rails projects
 
 ```console
-bundle exec rails new example-app -m https://raw.githubusercontent.com/mariomarroquim/rails-mvp-templates/refs/heads/main/add_development_tools.rb
+rails new example-app -m https://raw.githubusercontent.com/mariomarroquim/rails-mvp-templates/refs/heads/main/add_development_tools.rb
 ```
 
 #### Existing Rails projects
 
 ```console
-bundle exec rails app:template LOCATION=https://raw.githubusercontent.com/mariomarroquim/rails-mvp-templates/refs/heads/main/add_production_tools.rb
+rails app:template LOCATION=https://raw.githubusercontent.com/mariomarroquim/rails-mvp-templates/refs/heads/main/add_production_tools.rb
 ```
 
 ## Support
