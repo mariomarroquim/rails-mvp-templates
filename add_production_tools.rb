@@ -23,7 +23,7 @@ inject_into_file "config/environments/test.rb", after: "Rails.application.config
 end
 
 inject_into_file "app/models/application_record.rb", after: "class ApplicationRecord < ActiveRecord::Base" do
-  "\n  # Track all changes to models.\n  has_paper_trail\n"
+  "\n  # Track changes to models.\n  has_paper_trail\n"
 end
 
 inject_into_file "app/controllers/application_controller.rb", after: "class ApplicationController < ActionController::Base" do
